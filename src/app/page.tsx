@@ -4,6 +4,7 @@ import { BeforeAfter } from "@/components/sections/before-after";
 import { Benefits } from "@/components/sections/benefits";
 import { Demo } from "@/components/sections/demo";
 import { Everything } from "@/components/sections/everything";
+import { Product } from "@/components/sections/product";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Offer } from "@/components/sections/offer";
 import { Faq } from "@/components/sections/faq";
@@ -21,6 +22,7 @@ export default function Home() {
       <Benefits />
       <Demo />
       <Everything />
+      <Product />
       <Testimonials />
       <Offer />
       <Faq />

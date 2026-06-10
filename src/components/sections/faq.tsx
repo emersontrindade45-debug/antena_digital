@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "Precisa de internet?",
     answer:
-      "Não. A antena capta o sinal digital aberto transmitido pelas emissoras — você assiste sem internet, sem Wi-Fi e sem consumir dados.",
+      "Não. A antena capta o sinal digital aberto transmitido pelas emissoras — você assiste sem internet, sem Wi-Fi e sem consumir dados. Ela também não usa energia elétrica: é 100% passiva.",
   },
   {
     question: "É fácil instalar?",
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "Funciona em apartamento?",
     answer:
-      "Sim. Em apartamentos, recomendamos posicionar a antena perto de uma janela voltada para a direção das torres de transmissão para obter a melhor recepção.",
+      "Sim. Em apartamentos, recomendamos posicionar a antena perto de uma janela ou varanda voltada para a direção das torres de transmissão. O cabo de 5 metros incluso dá liberdade para encontrar o melhor ponto sem mover a TV.",
   },
   {
     question: "Tem garantia?",

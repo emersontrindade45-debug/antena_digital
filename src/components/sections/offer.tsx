@@ -8,8 +8,9 @@ const PRICE_ORIGINAL = process.env.NEXT_PUBLIC_PRICE_ORIGINAL ?? "197";
 const PRICE = process.env.NEXT_PUBLIC_PRICE ?? "97";
 
 const included = [
-  "Antena digital pronta para usar",
-  "Cabo e suporte de instalação",
+  "Antena Digital HDTV 3.5 DBI (interna e externa)",
+  "Cabo de 5 metros de alta qualidade incluso",
+  "Resistente a sol e chuva, sem usar energia elétrica",
   "Manual passo a passo em português",
   "Garantia contra defeitos",
 ];

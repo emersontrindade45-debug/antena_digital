@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { SignalHigh, Wallet, Zap } from "lucide-react";
-import { CtaButton } from "@/components/cta-button";
+import { ChevronDown, SignalHigh, Wallet, Zap } from "lucide-react";
 
 const trustBadges = [
   { icon: Wallet, label: "Sem mensalidade" },
@@ -87,12 +86,6 @@ export function Hero() {
             feita para quem não quer perder nenhum lance.
           </p>
 
-          <div className="rise-in rise-in-4 mt-10">
-            <CtaButton location="hero" pulse>
-              Quero assistir com imagem limpa
-            </CtaButton>
-          </div>
-
           <ul className="rise-in rise-in-4 mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-foreground/80">
             {trustBadges.map(({ icon: Icon, label }) => (
               <li key={label} className="flex items-center gap-2">
@@ -103,6 +96,15 @@ export function Hero() {
           </ul>
         </div>
       </div>
+
+      {/* Convite à rolagem: a jornada continua página abaixo */}
+      <a
+        href="#tensao"
+        aria-label="Rolar para ver mais"
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 animate-bounce rounded-full border border-white/15 bg-night/50 p-2 text-foreground/70 backdrop-blur-sm transition-colors hover:text-gold"
+      >
+        <ChevronDown className="h-5 w-5" aria-hidden />
+      </a>
     </section>
   );
 }

@@ -3,18 +3,27 @@
 import { useEffect, useState } from "react";
 import { CtaButton } from "@/components/cta-button";
 
-/** Barra fixa de CTA no mobile — aparece depois que o Hero sai da tela (RF-03). */
+/**
+ * Barra fixa de CTA no mobile (RF-03).
+ * Só aparece depois que o visitante percorre a página e chega à seção
+ * do produto — primeiro os benefícios, depois o convite à compra.
+ */
 export function StickyCta() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("hero");
-    if (!hero) return;
+    const product = document.getElementById("produto");
+    if (!product) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0.1 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
     );
-    observer.observe(hero);
+    observer.observe(product);
     return () => observer.disconnect();
   }, []);
 

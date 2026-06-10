@@ -152,11 +152,110 @@
   animation: cta-pulse 2.4s ease-out infinite;
 }
 
+/* ===== Efeitos da headline do Hero ===== */
+
+/* Revelar cinematográfico palavra a palavra: sobe, gira e sai do desfoque */
+@keyframes word-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.55em) scale(0.94) rotateX(40deg);
+    filter: blur(12px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.hero-line {
+  display: block;
+  perspective: 700px;
+}
+
+.hero-word {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  animation: word-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both;
+}
+
+/* Brilho de refletor varrendo o título */
+@keyframes hero-glint {
+  0% { background-position: 140% 0; }
+  16% { background-position: -40% 0; }
+  100% { background-position: -40% 0; }
+}
+
+.hero-glint {
+  position: relative;
+}
+
+.hero-glint::after {
+  content: "";
+  position: absolute;
+  inset: -6%;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background: linear-gradient(
+      100deg,
+      transparent 42%,
+      rgb(255 255 255 / 0.5) 50%,
+      transparent 58%
+    )
+    no-repeat;
+  background-size: 220% 100%;
+  background-position: 140% 0;
+  animation: hero-glint 5.5s ease-in-out 1.9s infinite;
+}
+
+/* Falha de sinal: a palavra "falhar." treme com separação RGB, como TV sem antena */
+@keyframes signal-glitch {
+  0%, 86%, 100% {
+    transform: none;
+    text-shadow: none;
+    opacity: 1;
+  }
+  87% {
+    transform: translateX(-4px) skewX(-10deg);
+    text-shadow: 4px 0 oklch(0.62 0.24 25), -4px 0 oklch(0.78 0.14 220);
+    opacity: 0.8;
+  }
+  89% {
+    transform: translateX(3px) translateY(2px);
+    text-shadow: -5px 0 oklch(0.62 0.24 25), 5px 0 oklch(0.78 0.14 220);
+    opacity: 0.95;
+  }
+  91% {
+    transform: translateX(-2px) skewX(6deg);
+    text-shadow: 3px 0 oklch(0.62 0.24 25), -3px 0 oklch(0.78 0.14 220);
+    opacity: 0.85;
+  }
+  93% {
+    transform: none;
+    text-shadow: none;
+    opacity: 1;
+  }
+}
+
+.hero-word.glitch-signal {
+  animation:
+    word-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both,
+    signal-glitch 4.8s steps(1, end) 2.8s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tv-static,
   .glitch-bar,
-  .cta-pulse {
+  .cta-pulse,
+  .hero-word,
+  .hero-word.glitch-signal {
     animation: none;
+  }
+  .hero-glint::after {
+    content: none;
   }
 }
 

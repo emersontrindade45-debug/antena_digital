@@ -42,10 +42,42 @@ export function Hero() {
           TV aberta ao vivo, do jeito certo
         </p>
 
-        <h1 className="headline rise-in rise-in-2 text-balance text-5xl drop-shadow-[0_2px_24px_rgb(0_0_0/0.6)] sm:text-7xl lg:text-8xl">
-          Na hora do gol,
-          <br />
-          <span className="text-gold">sua imagem não pode falhar.</span>
+        <h1
+          aria-label="Na hora do gol, sua imagem não pode falhar."
+          className="headline hero-glint text-balance text-5xl drop-shadow-[0_2px_24px_rgb(0_0_0/0.6)] sm:text-7xl lg:text-8xl"
+        >
+          <span aria-hidden="true">
+            <span className="hero-line">
+              {["Na", "hora", "do", "gol,"].map((word, i) => (
+                <span
+                  key={word}
+                  className="hero-word"
+                  style={{ "--d": `${0.15 + i * 0.09}s` } as React.CSSProperties}
+                >
+                  {word}
+                  {" "}
+                </span>
+              ))}
+            </span>
+            <span className="hero-line text-gold">
+              {["sua", "imagem", "não", "pode"].map((word, i) => (
+                <span
+                  key={word}
+                  className="hero-word"
+                  style={{ "--d": `${0.58 + i * 0.09}s` } as React.CSSProperties}
+                >
+                  {word}
+                  {" "}
+                </span>
+              ))}
+              <span
+                className="hero-word glitch-signal"
+                style={{ "--d": "1.02s" } as React.CSSProperties}
+              >
+                falhar.
+              </span>
+            </span>
+          </span>
         </h1>
 
         <p className="rise-in rise-in-3 mt-6 max-w-2xl text-pretty text-lg text-foreground/85 drop-shadow-[0_1px_12px_rgb(0_0_0/0.8)] sm:text-xl">

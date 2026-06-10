@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
@@ -25,23 +26,13 @@ export function TvMockup({
               </p>
             </>
           ) : (
-            <>
-              {/* Gramado em perspectiva */}
-              <div className="absolute inset-0 bg-gradient-to-b from-sky-950 from-15% via-pitch-deep via-40% to-pitch/80" />
-              <div className="absolute inset-x-0 bottom-0 h-3/4 [background:repeating-linear-gradient(90deg,transparent_0_12%,oklch(1_0_0/0.05)_12%_24%)]" />
-              {/* Círculo central */}
-              <div className="absolute left-1/2 top-[68%] h-[40%] w-[34%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] border-2 border-white/35" />
-              <div className="absolute inset-x-0 top-[68%] h-px bg-white/35" />
-              {/* Placar */}
-              <div className="absolute left-2 top-2 flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-1 text-[10px] font-bold text-white backdrop-blur-sm sm:left-3 sm:top-3 sm:px-3 sm:py-1.5 sm:text-xs">
-                <span className="text-gold">AO VIVO</span>
-                <span className="text-white/50">•</span>
-                <span>2º TEMPO 43:12</span>
-              </div>
-              <div className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-1 text-[10px] font-bold text-white backdrop-blur-sm sm:bottom-3 sm:left-3 sm:px-3 sm:py-1.5 sm:text-xs">
-                CASA 1 × 0 VISITANTE
-              </div>
-            </>
+            <Image
+              src="/images/transmissao.webp"
+              alt="Transmissão nítida de um jogo de futebol com placar ao vivo"
+              fill
+              sizes="(max-width: 768px) 100vw, 600px"
+              className="object-cover"
+            />
           )}
         </div>
       </div>

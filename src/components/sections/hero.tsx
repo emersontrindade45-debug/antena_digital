@@ -46,30 +46,30 @@ export function Hero() {
 
           <h1
             aria-label="Na hora do gol, sua imagem não pode falhar."
-            className="headline hero-glint text-balance text-5xl drop-shadow-[0_2px_24px_rgb(0_0_0/0.6)] sm:text-7xl lg:text-8xl"
+            className="headline hero-glint text-balance text-4xl drop-shadow-[0_2px_24px_rgb(0_0_0/0.6)] sm:text-5xl md:text-6xl lg:text-7xl"
           >
             <span aria-hidden="true">
               <span className="hero-line">
                 {["Na", "hora", "do", "gol,"].map((word, i) => (
-                  <span
-                    key={word}
-                    className="hero-word"
-                    style={{ "--d": `${0.15 + i * 0.09}s` } as React.CSSProperties}
-                  >
-                    {word}
-                    {" "}
+                  <span key={word}>
+                    <span
+                      className="hero-word"
+                      style={{ "--d": `${0.15 + i * 0.09}s` } as React.CSSProperties}
+                    >
+                      {word}
+                    </span>{" "}
                   </span>
                 ))}
               </span>
               <span className="hero-line text-gold">
                 {["sua", "imagem", "não", "pode"].map((word, i) => (
-                  <span
-                    key={word}
-                    className="hero-word"
-                    style={{ "--d": `${0.58 + i * 0.09}s` } as React.CSSProperties}
-                  >
-                    {word}
-                    {" "}
+                  <span key={word}>
+                    <span
+                      className="hero-word"
+                      style={{ "--d": `${0.58 + i * 0.09}s` } as React.CSSProperties}
+                    >
+                      {word}
+                    </span>{" "}
                   </span>
                 ))}
                 <span

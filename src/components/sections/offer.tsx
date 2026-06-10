@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Check, Truck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -38,6 +39,17 @@ export function Offer() {
 
         <Card className="mt-10 border-gold/25 bg-card/90 shadow-[0_0_80px_-20px] shadow-gold/20">
           <CardContent className="p-6 sm:p-10">
+            <div className="mx-auto mb-8 w-full max-w-xs overflow-hidden rounded-2xl bg-white">
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/produto-estudio.webp"
+                  alt="Antena Digital HDTV 3.5 DBI com base magnética e cabo de 5 metros"
+                  fill
+                  sizes="320px"
+                  className="object-contain p-4"
+                />
+              </div>
+            </div>
             <div className="flex flex-col items-center gap-1 text-center">
               <p className="text-muted-foreground line-through">
                 De R$ {PRICE_ORIGINAL}

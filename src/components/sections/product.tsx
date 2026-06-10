@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Cable,
   CloudSun,
@@ -7,6 +8,27 @@ import {
   Tv,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+
+const gallery = [
+  {
+    src: "/images/produto-kit.webp",
+    alt: "Kit completo: antena com base magnética e cabo coaxial de 5 metros",
+    label: "O kit completo",
+    caption: "Antena, base e 5 metros de cabo coaxial RG-6",
+  },
+  {
+    src: "/images/produto-estudio.webp",
+    alt: "Antena digital HDTV em foto de estúdio, design compacto e elegante",
+    label: "Design discreto",
+    caption: "18 cm que somem na decoração da sala",
+  },
+  {
+    src: "/images/produto-conector.webp",
+    alt: "Close do conector coaxial metálico de alta qualidade",
+    label: "Feita para durar",
+    caption: "Conector metálico de encaixe firme, sem mau contato",
+  },
+];
 
 /*
  * Seção do produto: cada característica técnica vira uma experiência.
@@ -74,6 +96,57 @@ export function Product() {
           Você não compra uma antena. Compra a tranquilidade de ligar a TV e
           ela simplesmente funcionar — todo dia, em qualquer tempo.
         </p>
+
+        {/* Palco do produto: a antena em ação */}
+        <figure className="relative mt-12 overflow-hidden rounded-3xl border border-gold/20 shadow-[0_0_100px_-30px] shadow-gold/30">
+          <div className="relative aspect-[16/9] sm:aspect-[21/9]">
+            <Image
+              src="/images/produto-cena.webp"
+              alt="Antena digital sobre o móvel da sala, em frente à TV ligada em alta definição"
+              fill
+              sizes="(max-width: 1152px) 100vw, 1152px"
+              className="object-cover object-[center_60%]"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-night/80 via-transparent to-transparent"
+            />
+          </div>
+          <figcaption className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-3 p-5 sm:p-8">
+            <span className="headline text-2xl text-gold sm:text-4xl">
+              Ela fica perto da TV.
+              <br />
+              O resultado, na tela inteira.
+            </span>
+            <span className="rounded-full border border-gold/40 bg-night/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-gold backdrop-blur-sm">
+              HDTV 3.5 DBI
+            </span>
+          </figcaption>
+        </figure>
+
+        {/* Fotos de estúdio: produto em detalhe */}
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          {gallery.map(({ src, alt, label, caption }) => (
+            <figure
+              key={label}
+              className="overflow-hidden rounded-2xl border border-white/8 bg-white"
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 384px"
+                  className="object-contain p-4"
+                />
+              </div>
+              <figcaption className="border-t border-night/10 bg-night px-5 py-4">
+                <p className="headline text-lg text-gold">{label}</p>
+                <p className="text-sm text-muted-foreground">{caption}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon: Icon, title, description, spec }) => (

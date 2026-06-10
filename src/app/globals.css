@@ -1,26 +1,176 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-anton), ui-sans-serif, system-ui, sans-serif;
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-pitch: var(--pitch);
+  --color-pitch-deep: var(--pitch-deep);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+ * Tema único (escuro) — "estádio à noite".
+ * Grafite + azul-noite no fundo, ouro nos CTAs, verde de gramado nos acentos.
+ */
+:root {
+  --night: oklch(0.17 0.03 255);
+  --night-soft: oklch(0.22 0.035 255);
+  --gold: oklch(0.83 0.165 85);
+  --gold-deep: oklch(0.72 0.155 75);
+  --pitch: oklch(0.72 0.19 150);
+  --pitch-deep: oklch(0.45 0.12 152);
+
+  --background: var(--night);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.21 0.03 255);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.21 0.03 255);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: var(--gold);
+  --primary-foreground: oklch(0.18 0.04 80);
+  --secondary: oklch(0.27 0.035 255);
+  --secondary-foreground: oklch(0.97 0.005 250);
+  --muted: oklch(0.27 0.035 255);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.27 0.035 255);
+  --accent-foreground: oklch(0.97 0.005 250);
+  --destructive: oklch(0.62 0.22 25);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--gold);
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Headline esportiva: condensada, caixa alta, tracking apertado */
+  .headline {
+    font-family: var(--font-anton), ui-sans-serif, system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.96;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Brilho de refletor de estádio */
+  .floodlight {
+    background:
+      radial-gradient(60% 45% at 50% 0%, oklch(0.45 0.09 255 / 55%) 0%, transparent 70%),
+      radial-gradient(45% 35% at 15% 8%, oklch(0.55 0.13 152 / 22%) 0%, transparent 70%),
+      radial-gradient(45% 35% at 85% 8%, oklch(0.6 0.14 85 / 16%) 0%, transparent 70%);
+  }
+
+  /* Granulação sutil para tirar o aspecto "liso de IA" */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
 }
+
+/* Chuvisco animado da TV "antes" */
+@keyframes tv-static {
+  0% { background-position: 0 0; }
+  25% { background-position: -120px 60px; }
+  50% { background-position: 80px -90px; }
+  75% { background-position: -60px -40px; }
+  100% { background-position: 0 0; }
+}
+
+.tv-static {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+  animation: tv-static 0.45s steps(4) infinite;
+}
+
+@keyframes glitch-bar {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  30% { transform: translateY(340%); opacity: 0.3; }
+  60% { transform: translateY(120%); opacity: 0.7; }
+  85% { transform: translateY(500%); opacity: 0.25; }
+}
+
+.glitch-bar {
+  animation: glitch-bar 2.8s ease-in-out infinite;
+}
+
+/* Pulso suave do CTA principal */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.83 0.165 85 / 45%); }
+  60% { box-shadow: 0 0 0 14px oklch(0.83 0.165 85 / 0%); }
+}
+
+.cta-pulse {
+  animation: cta-pulse 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tv-static,
+  .glitch-bar,
+  .cta-pulse {
+    animation: none;
+  }
+}
+
+/* Revelação em cascata na carga da página */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rise-in {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-in-1 { animation-delay: 0.05s; }
+.rise-in-2 { animation-delay: 0.18s; }
+.rise-in-3 { animation-delay: 0.32s; }
+.rise-in-4 { animation-delay: 0.46s; }

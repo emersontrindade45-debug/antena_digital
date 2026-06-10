@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SignalHigh, Wallet, Zap } from "lucide-react";
 import { CtaButton } from "@/components/cta-button";
 
@@ -11,16 +12,29 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="floodlight grain relative isolate overflow-hidden px-5 pt-20 pb-16 sm:pt-28 sm:pb-24"
+      className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden"
     >
-      {/* Linha do gramado no horizonte */}
+      {/* Foto de fundo: família imersa no jogo sob refletores */}
+      <Image
+        src="/images/hero.webp"
+        alt="Família reunida no sofá assistindo a um jogo de futebol com imagem nítida na TV"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      {/* Camadas de escurecimento para legibilidade do texto */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-pitch-deep/30 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-night via-night/60 to-night/30"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_100%,oklch(0.17_0.03_255/0.9)_0%,transparent_70%)]"
       />
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-        <p className="rise-in rise-in-1 mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-sm font-semibold tracking-wide text-gold uppercase">
+      <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center px-5 pb-16 pt-32 text-center sm:pb-24">
+        <p className="rise-in rise-in-1 mb-6 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-night/60 px-4 py-1.5 text-sm font-semibold tracking-wide text-gold uppercase backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
@@ -28,13 +42,13 @@ export function Hero() {
           TV aberta ao vivo, do jeito certo
         </p>
 
-        <h1 className="headline rise-in rise-in-2 text-balance text-5xl sm:text-7xl lg:text-8xl">
+        <h1 className="headline rise-in rise-in-2 text-balance text-5xl drop-shadow-[0_2px_24px_rgb(0_0_0/0.6)] sm:text-7xl lg:text-8xl">
           Na hora do gol,
           <br />
           <span className="text-gold">sua imagem não pode falhar.</span>
         </h1>
 
-        <p className="rise-in rise-in-3 mt-6 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl">
+        <p className="rise-in rise-in-3 mt-6 max-w-2xl text-pretty text-lg text-foreground/85 drop-shadow-[0_1px_12px_rgb(0_0_0/0.8)] sm:text-xl">
           Resolva o sinal da sua TV com uma antena digital prática, rápida e
           feita para quem não quer perder nenhum lance.
         </p>
@@ -45,10 +59,10 @@ export function Hero() {
           </CtaButton>
         </div>
 
-        <ul className="rise-in rise-in-4 mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
+        <ul className="rise-in rise-in-4 mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-foreground/80">
           {trustBadges.map(({ icon: Icon, label }) => (
             <li key={label} className="flex items-center gap-2">
-              <Icon className="h-4 w-4 text-pitch" aria-hidden />
+              <Icon className="h-4 w-4 text-gold" aria-hidden />
               {label}
             </li>
           ))}

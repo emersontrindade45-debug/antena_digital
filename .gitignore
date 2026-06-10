@@ -34,6 +34,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# originais das imagens (pesados; o site usa os .webp otimizados)
+/imagens-originais
+
 # vercel
 .vercel
 

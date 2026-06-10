@@ -1,17 +1,26 @@
+import Image from "next/image";
 import { CtaButton } from "@/components/cta-button";
 
 export function FinalCta() {
   return (
     <section
       id="cta-final"
-      className="grain relative overflow-hidden px-5 py-20 sm:py-28"
+      className="relative isolate overflow-hidden px-5 py-24 sm:py-32"
     >
+      <Image
+        src="/images/celebracao.webp"
+        alt="Amigos vibrando juntos assistindo ao jogo, sala se transformando em estádio"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_100%,oklch(0.45_0.12_152/0.35)_0%,transparent_70%)]"
+        className="absolute inset-0 bg-gradient-to-b from-night/90 via-night/70 to-night/90"
       />
+
       <div className="relative mx-auto max-w-3xl text-center">
-        <h2 className="headline text-balance text-4xl sm:text-6xl">
+        <h2 className="headline text-balance text-4xl drop-shadow-[0_2px_16px_rgb(0_0_0/0.7)] sm:text-6xl">
           Não espere sua programação começar
           <br />
           <span className="text-gold">
@@ -23,6 +32,9 @@ export function FinalCta() {
             Quero minha antena agora
           </CtaButton>
         </div>
+        <p className="mt-6 text-sm text-foreground/75">
+          Compra segura • Garantia de 7 dias • Envio imediato
+        </p>
       </div>
     </section>
   );

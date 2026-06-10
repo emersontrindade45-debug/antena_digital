@@ -1,4 +1,4 @@
-import { TvMockup } from "@/components/tv-mockup";
+import Image from "next/image";
 
 const steps = [
   { number: "1", label: "Ligou" },
@@ -17,12 +17,22 @@ export function Demo() {
           Sem complicação para acompanhar seus programas favoritos.
         </p>
 
-        <div className="mt-12">
-          <TvMockup variant="good" className="mx-auto max-w-2xl" />
-        </div>
+        <figure className="relative mx-auto mt-12 aspect-video max-w-3xl overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50">
+          <Image
+            src="/images/demo.webp"
+            alt="Imagem tão nítida que o jogador parece saltar para fora da TV"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-t from-night/40 to-transparent"
+          />
+        </figure>
 
         <ol className="mx-auto mt-12 flex max-w-2xl items-start justify-between gap-4">
-          {steps.map(({ number, label }, index) => (
+          {steps.map(({ number, label }) => (
             <li
               key={number}
               className="flex flex-1 flex-col items-center gap-3 text-center"
@@ -31,7 +41,6 @@ export function Demo() {
                 {number}
               </span>
               <span className="headline text-lg sm:text-2xl">{label}</span>
-              {index < steps.length - 1 && <span className="sr-only">depois</span>}
             </li>
           ))}
         </ol>

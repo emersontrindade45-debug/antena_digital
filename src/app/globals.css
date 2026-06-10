@@ -250,18 +250,31 @@
 
 /* Brilho dourado + sombra de profundidade: o produto "salta" da página */
 .product-pop {
-  filter: drop-shadow(0 0 22px oklch(0.83 0.165 85 / 0.35))
-    drop-shadow(0 20px 30px rgb(0 0 0 / 0.6));
+  filter: drop-shadow(0 0 12px oklch(0.88 0.16 88 / 0.6))
+    drop-shadow(0 0 45px oklch(0.83 0.165 85 / 0.45))
+    drop-shadow(0 28px 24px rgb(0 0 0 / 0.7));
 }
 
 /* Halo radial dourado atrás do produto */
 .product-halo {
   background: radial-gradient(
-    50% 50% at 50% 55%,
-    oklch(0.83 0.165 85 / 0.26) 0%,
-    oklch(0.83 0.165 85 / 0.07) 45%,
-    transparent 72%
+    55% 55% at 50% 52%,
+    oklch(0.86 0.16 87 / 0.42) 0%,
+    oklch(0.83 0.165 85 / 0.14) 45%,
+    transparent 74%
   );
+}
+
+/* Sombra de contato no "chão": elipse escura com reflexo dourado */
+.product-ground {
+  border-radius: 100%;
+  background: radial-gradient(
+    50% 100% at 50% 50%,
+    rgb(0 0 0 / 0.65) 0%,
+    oklch(0.83 0.165 85 / 0.3) 50%,
+    transparent 78%
+  );
+  filter: blur(9px);
 }
 
 /* Levitação sutil */

@@ -133,6 +133,10 @@ export function Product() {
             >
               <div className="relative aspect-[4/3]">
                 <div aria-hidden className="product-halo absolute inset-0" />
+                <div
+                  aria-hidden
+                  className="product-ground absolute inset-x-[20%] bottom-[7%] h-5"
+                />
                 <Image
                   src={src}
                   alt={alt}

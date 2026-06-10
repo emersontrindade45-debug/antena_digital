@@ -41,6 +41,10 @@ export function Offer() {
           <CardContent className="p-6 sm:p-10">
             <div className="relative mx-auto mb-6 w-full max-w-xs">
               <div aria-hidden className="product-halo absolute -inset-6" />
+              <div
+                aria-hidden
+                className="product-ground absolute inset-x-[18%] bottom-[2%] h-6"
+              />
               <div className="relative aspect-square">
                 <Image
                   src="/images/produto-estudio.webp"

@@ -39,14 +39,15 @@ export function Offer() {
 
         <Card className="mt-10 border-gold/25 bg-card/90 shadow-[0_0_80px_-20px] shadow-gold/20">
           <CardContent className="p-6 sm:p-10">
-            <div className="mx-auto mb-8 w-full max-w-xs overflow-hidden rounded-2xl bg-white">
+            <div className="relative mx-auto mb-6 w-full max-w-xs">
+              <div aria-hidden className="product-halo absolute -inset-6" />
               <div className="relative aspect-square">
                 <Image
                   src="/images/produto-estudio.webp"
                   alt="Antena Digital HDTV 3.5 DBI com base magnética e cabo de 5 metros"
                   fill
                   sizes="320px"
-                  className="object-contain p-4"
+                  className="product-pop float-soft object-contain p-3"
                 />
               </div>
             </div>

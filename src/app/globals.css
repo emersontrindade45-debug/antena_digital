@@ -246,12 +246,45 @@
     signal-glitch 4.8s steps(1, end) 2.8s infinite;
 }
 
+/* ===== Destaque 3D do produto (fotos sem fundo) ===== */
+
+/* Brilho dourado + sombra de profundidade: o produto "salta" da página */
+.product-pop {
+  filter: drop-shadow(0 0 22px oklch(0.83 0.165 85 / 0.35))
+    drop-shadow(0 20px 30px rgb(0 0 0 / 0.6));
+}
+
+/* Halo radial dourado atrás do produto */
+.product-halo {
+  background: radial-gradient(
+    50% 50% at 50% 55%,
+    oklch(0.83 0.165 85 / 0.26) 0%,
+    oklch(0.83 0.165 85 / 0.07) 45%,
+    transparent 72%
+  );
+}
+
+/* Levitação sutil */
+@keyframes float-soft {
+  from {
+    transform: translateY(3px);
+  }
+  to {
+    transform: translateY(-7px);
+  }
+}
+
+.float-soft {
+  animation: float-soft 3.6s ease-in-out var(--float-d, 0s) infinite alternate;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tv-static,
   .glitch-bar,
   .cta-pulse,
   .hero-word,
-  .hero-word.glitch-signal {
+  .hero-word.glitch-signal,
+  .float-soft {
     animation: none;
   }
   .hero-glint::after {

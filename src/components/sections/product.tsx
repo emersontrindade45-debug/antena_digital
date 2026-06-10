@@ -124,23 +124,25 @@ export function Product() {
           </figcaption>
         </figure>
 
-        {/* Fotos de estúdio: produto em detalhe */}
+        {/* Fotos do produto sem fundo: halo dourado + levitação 3D */}
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          {gallery.map(({ src, alt, label, caption }) => (
+          {gallery.map(({ src, alt, label, caption }, i) => (
             <figure
               key={label}
-              className="overflow-hidden rounded-2xl border border-white/8 bg-white"
+              className="overflow-hidden rounded-2xl border border-gold/15 bg-night-soft/40 transition-colors hover:border-gold/35"
             >
               <div className="relative aspect-[4/3]">
+                <div aria-hidden className="product-halo absolute inset-0" />
                 <Image
                   src={src}
                   alt={alt}
                   fill
                   sizes="(max-width: 640px) 100vw, 384px"
-                  className="object-contain p-4"
+                  className="product-pop float-soft object-contain p-7"
+                  style={{ "--float-d": `${i * 0.7}s` } as React.CSSProperties}
                 />
               </div>
-              <figcaption className="border-t border-night/10 bg-night px-5 py-4">
+              <figcaption className="border-t border-white/8 px-5 py-4">
                 <p className="headline text-lg text-gold">{label}</p>
                 <p className="text-sm text-muted-foreground">{caption}</p>
               </figcaption>
